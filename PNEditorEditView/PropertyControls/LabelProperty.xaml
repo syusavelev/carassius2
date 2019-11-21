@@ -1,0 +1,18 @@
+﻿<local:PropertyEditorBase x:Class="PNEditorEditView.PropertyControls.LabelProperty"
+                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                          xmlns:local="clr-namespace:PNEditorEditView.PropertyControls"
+                          mc:Ignorable="d" 
+                          d:DesignHeight="25" d:DesignWidth="200">
+    <Grid Margin="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <!-- Or Auto -->
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Label" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Name="TbLabel" LostFocus="TbLabel_OnLostFocus" KeyDown="TbLabel_OnKeyDown"/>
+    </Grid>
+</local:PropertyEditorBase>

@@ -1,0 +1,58 @@
+﻿<Window x:Class="PNEditorEditView.PNtoTeXSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Convert Petri Net to LaTeX" Height="600" Width="610"  MinWidth="610" MaxWidth="610" MinHeight="600" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Icon="images/Carassius.ico" ShowInTaskbar="False">
+    <Grid Background="Gainsboro" Margin="0" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="350"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Margin="10,10,0,0" Grid.RowSpan="2" Background="#FFCDCDCD" Grid.ColumnSpan="2" Height="35" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="27"/>
+                <RowDefinition Height="36"/>
+            </Grid.RowDefinitions>
+            <Label Content="Align model" HorizontalContentAlignment="Left" Margin="0,0,187,28" Grid.RowSpan="2"/>
+            <RadioButton x:Name="LeftNetAlign"  Content="Left" Margin="98,6,129,0" Checked="LeftChecked"  />
+            <RadioButton x:Name="CenterNetAlign" Content="Center" Margin="156,6,56,0"  Checked="CenterChecked" />
+            <RadioButton x:Name="RightNetAlign" Content="Right" Margin="229,6,0,0"  Checked="RightChecked"/>
+        </Grid>
+        <Button x:Name="ChosePath" Content="Select file path" VerticalContentAlignment="Center" Margin="10,10,8,10" Grid.Row="4" Click="StartDialog"/>
+        <Label x:Name="ChosenPath" Content="File Path" Grid.Row="4" VerticalContentAlignment="Center" Margin="0,10,0,10" Grid.ColumnSpan="2" Background="#FFB6B6B6" Grid.Column="1"/>
+        <Button x:Name="Save" Content="Save as .tex file" Grid.Column="3" Margin="10,10,14,10" Grid.Row="4" Click="Save_Click_1"/>
+        <TextBox x:Name="Result" GotFocus="Update" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" IsReadOnly="True" Grid.ColumnSpan="4" Margin="10,0" Grid.Row="3" TextWrapping="WrapWithOverflow" Background="#FFF1F1F1" />
+        <Grid Grid.Column="2" Margin="10" Grid.RowSpan="3" Background="#FFCDCDCD" ToolTip="Если вы хотите изменить размер то выбирите необходимую величину" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="155*"/>
+                <ColumnDefinition Width="48*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="27"/>
+                <RowDefinition Height="36"/>
+                <RowDefinition Height="36"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+            <Label Content="Model Canvas Size" HorizontalContentAlignment="Center" Margin="10,0" Grid.ColumnSpan="3"/>
+            <CheckBox x:Name="WChose" Content="Width" Margin="10,10,0,10" Grid.Row="1" Checked="WidthChedked" Unchecked="WidthUnchecked"/>
+            <CheckBox x:Name="HChose" Content="Height" Margin="10,10,6,0" Grid.Row="2" Checked="HeightChedked" Unchecked="HeightUnchecked"/>
+            <TextBox x:Name="NetCanvasWidth" Grid.Column="1" Margin="5" Grid.Row="1" TextWrapping="Wrap" TextChanged="WChanged" IsEnabled="False" ToolTip="Введите вещественное число"/>
+            <TextBox x:Name="NetCanvasHeight" Grid.Column="1" Margin="5" Grid.Row="2" TextWrapping="Wrap" TextChanged="HChanged" IsEnabled="False" ToolTip="Введите вещественное число"/>
+            <Label Content="cm" Grid.Column="2" Grid.Row="1" Margin="0,5,0,5"/>
+            <Label Content="cm" Grid.Column="2" Grid.Row="2" Margin="0,5"/>
+            <Button Content="Compute" Grid.Column="1" Margin="5,7,5,0" Grid.Row="3" Click="Update"/>
+        </Grid>
+        <TextBox x:Name="PreambleText" HorizontalAlignment="Left" Height="100" Margin="10,0,0,0" Grid.Row="1" TextWrapping="Wrap"  IsReadOnly="True" Text="TextBox" VerticalAlignment="Top" Width="290" Grid.ColumnSpan="2" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+    </Grid>
+</Window>
+

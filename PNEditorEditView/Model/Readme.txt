@@ -1,0 +1,1 @@
+﻿The previously created model is placed here. It is used as presentation model and is synchronized with real model in main controller.

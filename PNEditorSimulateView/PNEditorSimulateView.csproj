@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{81B48636-E100-4665-9464-91305AEBA154}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PNEditorSimulateView</RootNamespace>
+    <AssemblyName>PNEditorSimulateView</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>images\Carassius.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BadModelLib">
+      <HintPath>..\BadModelLib\bin\Debug\BadModelLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphSharp">
+      <HintPath>..\Libs\Sample\GraphSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphSharp.Contracts">
+      <HintPath>..\Libs\Sample\GraphSharp.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphSharp.Controls">
+      <HintPath>..\Libs\Sample\GraphSharp.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Contracts">
+      <HintPath>..\Libs\Sample\Microsoft.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Msagl">
+      <HintPath>..\Libs\Microsoft.Msagl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Msagl.Drawing">
+      <HintPath>..\Libs\Microsoft.Msagl.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Msagl.WpfGraphControl">
+      <HintPath>..\Libs\Microsoft.Msagl.WpfGraphControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+    <Reference Include="System.Windows.Controls.Theming">
+      <HintPath>..\Libs\Sample\System.Windows.Controls.Theming.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Theming.ExpressionDark">
+      <HintPath>..\Libs\Sample\System.Windows.Controls.Theming.ExpressionDark.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFExtensions">
+      <HintPath>..\Libs\Sample\WPFExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit">
+      <HintPath>..\Libs\Sample\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>..\Libs\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>..\Libs\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\Libs\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Node.cs" />
+    <Compile Include="Model\VPetriNet.cs" />
+    <Compile Include="Model\PetriNetNode.cs" />
+    <Compile Include="Model\ShadowCopyList.cs" />
+    <Compile Include="ImportExport\BitmapExporter.cs" />
+    <Compile Include="ModelArrange\PetriNetColumnAndGraphForceBasedGeneralArranger.cs" />
+    <Compile Include="ModelArrange\IArranger.cs" />
+    <Compile Include="Util\MathUtil.cs" />
+    <Compile Include="Util\ModelUtil.cs" />
+    <Compile Include="Util\VisUtil.cs" />
+    <Page Include="PNEditorAbout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PNEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Command.cs" />
+    <Compile Include="FiguresMethods.cs" />
+    <Compile Include="ImportExport\GraphML.cs" />
+    <Compile Include="Model\IModel.cs" />
+    <Compile Include="PNEditorAbout.xaml.cs">
+      <DependentUpon>PNEditorAbout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PNEditorControlCutCopyPaste.cs" />
+    <Compile Include="PNEditorControlSimulation.cs" />
+    <Compile Include="PNEditorControlUndoRedo.cs" />
+    <Compile Include="ImportExport\Pnml.cs" />
+    <Compile Include="PNEditorControl.xaml.cs">
+      <DependentUpon>PNEditorControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PNtoTeXSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ImportExport\PNtoTex.cs" />
+    <Compile Include="PNtoTeXSettings.xaml.cs">
+      <DependentUpon>PNtoTeXSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CarassiusLogoBtn.png" />
+    <Resource Include="images\cursor_4780.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\edit-clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\pngimage_8480.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\delete_1483.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\transition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\place.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\arc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\token.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\minus.png" />
+    <Resource Include="images\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\redo_3882.png" />
+    <Resource Include="images\undo_2681.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\arc1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\hideLabels.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\hideGrid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CarassiusLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Carassius.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Mesh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tokengame-play-btn.png" />
+    <Resource Include="images\tokengame-reset-btn.png" />
+    <Resource Include="images\tokengame-step-btn.png" />
+    <Resource Include="images\tokengame-stop-btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tokengame-step-back-btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\btn-add-arc.png" />
+    <Resource Include="images\btn-add-place.png" />
+    <Resource Include="images\btn-add-token.png" />
+    <Resource Include="images\btn-add-transition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\btn-copy.png" />
+    <Resource Include="images\btn-cut.png" />
+    <Resource Include="images\btn-paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Carassius-Logo-Mini-42.png" />
+    <Resource Include="images\Carassius-Logo-Mini-80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\plus3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\btn-all-to-mesh.png" />
+    <Resource Include="images\btn-fsms-add-async-link.png" />
+    <Resource Include="images\btn-fsms-add-sync-link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\btn-always-to-mesh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{19b6a8fc-7ba5-4748-915e-65dfd8d8a65e}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GraphVisualisationModule\GraphVisualizationModule.csproj">
+      <Project>{2942b57c-b250-4cad-be87-44645071be67}</Project>
+      <Name>GraphVisualizationModule</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="docs\TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="docs\ReleaseNotes.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

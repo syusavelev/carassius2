@@ -1,0 +1,10 @@
+﻿
+
+Carassius 1.1.2
+
+Known bugs
+
+-- Simulation mode fails if there are places with more than 5 tokens
+
+Before
+

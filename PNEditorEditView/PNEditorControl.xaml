@@ -1,0 +1,326 @@
+﻿<UserControl x:Class="PNEditorEditView.PNEditorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:props="clr-namespace:PNEditorEditView.PropertyControls"
+             mc:Ignorable="d" d:DesignHeight="550" d:DesignWidth="970" SizeChanged="UserControl_SizeChanged" Name="MainControl" Background="WhiteSmoke" KeyDown="UserControlKeyDown" >
+    <Grid Name="myGrid" Background="WhiteSmoke" >
+        <DockPanel LastChildFill="True">
+            <StackPanel Name="pnlTopDock" DockPanel.Dock="Top" Orientation="Horizontal">
+                <StackPanel Name="pnlMenuPanel" Orientation="Vertical" Margin="3">
+                    <!-- Begin: Main Menu -->
+                    <Border BorderBrush="Gray" BorderThickness="1" Name="border1" Height="49" Width="49" Visibility="Collapsed">
+                        <Menu Name="menuMainMenu" VerticalAlignment="Center" IsMainMenu="True" DataContext="{Binding}" Margin="0">
+                            <MenuItem Name="menuMainSection"  FontFamily="Levenim MT">
+                                <MenuItem.Header>
+                                    <Image Source="images/Carassius-Logo-Mini-42.png" Height="33" Width="33" />
+                                </MenuItem.Header>
+                                <MenuItem Name="menuNew" Header="New" FontSize="10" Click="MenuNew_Click" />
+                                <MenuItem Name="menuOpen" Header="Open" FontSize="10" />
+                                <MenuItem Name="menuSave" Header="Save" FontSize="10" IsEnabled="False"  />
+                                <MenuItem Name="menuSaveWithoutLayout" Header="Save without layout" FontSize="10" IsEnabled="False" Click="MenuSaveWithoutLayout_Click" />
+                                <MenuItem Name="menuSaveAs" Header="Save as.." FontSize="10" />
+                                <MenuItem Name="menuSaveAsWithoutLayout" Header="Save as without layout.." FontSize="10" Click="MenuSaveAsWithoutLayout_Click" />
+                                <MenuItem Name="menuExportToPicture" Header="Export as an image (*.png)" FontSize="10"  />
+                                <MenuItem Name="menuMakeTeX" Header="Export as a LaTeX code" FontSize="10" />
+                                <MenuItem Name="menuAbout" Header="About" FontSize="10" >
+                                    <MenuItem.Icon>
+                                        <Image Source="images/Carassius-Logo-Mini-42.png" Width="18" Height="18" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </MenuItem>
+                        </Menu>
+                    </Border>
+                    <!-- End: Main Menu -->
+                </StackPanel>
+                <Separator/>
+
+                <!-- Begin: Top Tool Panel -->
+                <StackPanel Name="pnlTopToolPanel" Orientation="Vertical" Margin="3">
+                    <StackPanel Name="pnlEditPanel" Orientation="Horizontal" Margin="3">
+                        <Button Name="btnSelect" Height="30" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="30" Click="btnSelect_Click" ToolTip="Select">
+                            <StackPanel>
+                                <Image Source="images/cursor_4780.png" Height="20" Width="20" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnDelete" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Click="btnDelete_Click" ToolTip="Delete selected figures">
+                            <StackPanel>
+                                <Image Source="images/delete_1483.png" Height="20" Width="20" Margin="0"/>
+                            </StackPanel>
+                        </Button>
+
+                        <StackPanel Orientation="Horizontal"/>
+                        <Button Name="btnClearWorkingField" Margin="0,0,5,0" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Click="btnClearWorkingField_Click" ToolTip="Clear the model">
+                            <StackPanel>
+                                <Image Source="images/edit-clear.png" Height="25" Width="25" />
+                            </StackPanel>
+                        </Button>
+
+                        <Separator/>
+                        <Button Name="btnUndo" HorizontalAlignment="Left" Margin="0" IsEnabled="False" VerticalAlignment="Top" Width="30" Height="30" Click="btnUndo_Click" ToolTip="Undo">
+                            <StackPanel>
+                                <Image Source="images/undo_2681.png" Height="20" Width="20" Margin="0" />
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnRedo" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Top" Width="30" Height="30" Click="btnRedo_Click" Margin="0,0,5,0" ToolTip="Redo">
+                            <StackPanel>
+                                <Image Source="images/redo_3882.png" Height="20" Width="20" Margin="0" />
+                            </StackPanel>
+                        </Button>
+
+                        <Separator/>
+
+                        <Button Name="btnCut" HorizontalAlignment="Left" Margin="0" Width="30" Height="30" VerticalAlignment="Top" Click="btnCut_Click" ToolTip="Cut">
+                            <StackPanel>
+                                <Image Source="images/btn-cut.png" Height="20" Width="20" Margin="0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnCopy" HorizontalAlignment="Left" Width="30" Height="30" VerticalAlignment="Top" Click="btnCopy_Click" ToolTip="Copy">
+                            <StackPanel>
+                                <Image Source="images/btn-copy.png" Height="20" Width="20" Margin="0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="btnPaste" VerticalAlignment="Top" HorizontalAlignment="Left" Width="30" Height="30" Click="btnPaste_Click" ToolTip="Paste" Margin="0,0,5,0">
+                            <StackPanel>
+                                <Image Source="images/btn-paste.png" Height="20" Width="20" Margin="0"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Separator/>
+
+                        <Button Name="btnSaveToPng" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Click="btnSaveToPng_Click" ToolTip="Save as an image (*.png)" Margin="0,0,5,0">
+                            <StackPanel>
+                                <Image Source="images/pngimage_8480.png" Height="20" Width="20" />
+                            </StackPanel>
+                        </Button>
+
+                        <Separator/>
+
+                        <!-- Begin: Scale Buttons -->
+                        <StackPanel Orientation="Horizontal">
+                            <Button HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Name="btnZoomMinus" Width="30" Height="30" Click="btnZoomMinus_Click" ToolTip="Zoom out">
+                                <StackPanel>
+                                    <Image Source="images/minus.png" Width="20" Height="20"/>
+                                </StackPanel>
+                            </Button>
+                            <Button HorizontalAlignment="Left" Margin="0" Name="btnZoomPlus" VerticalAlignment="Top" Width="30" Height="30" Click="btnZoomPlus_Click" ToolTip="Zoom in">
+                                <StackPanel>
+                                    <Image Source="images/plus.png" Width="20" Height="20" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <!-- End: Scale Buttons -->
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="3">
+
+                        <Button Name="btnShowHideLabels" Height="49" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" Click="btnShowHideLabels_Click" FontFamily="Candara" IsEnabled="False" ToolTip="Hide/show labels on the model">
+                            <StackPanel>
+                                <Image Source="images/hideLabels.png" Height="38" Width="38" Margin="0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Height="49" Margin="0,0,5,0" HorizontalAlignment="Left" Name="btnGrid" VerticalAlignment="Top" Width="49" Click="btnGrid_Click" FontFamily="Candara" ToolTip="Hide/show grid">
+                            <StackPanel>
+                                <Image Source="images/hideGrid.png" Width="38" Height="38" Margin="0"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Height="49" Margin="0,0,5,0" HorizontalAlignment="Left" Name="btnArrangeModel" VerticalAlignment="Top" Width="69" Click="btnArrangeModel_Click" FontStretch="Normal" ToolTip="Arrange model" >
+                            <StackPanel>
+                                <TextBlock Text="Arrange model" TextAlignment="Center" TextWrapping="Wrap" FontSize="12" FontFamily="Levenim MT" FontWeight="Normal" />
+                            </StackPanel>
+                        </Button>
+
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Grid layout:" TextAlignment="Center" TextWrapping="Wrap" FontSize="10" FontFamily="Levenim MT" FontWeight="Normal" />
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="btnTieToMesh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="32" Click="btnTieToMesh_Click" ToolTip="Tie this node to the grid">
+                                    <StackPanel>
+                                        <Image Source="images/Mesh.png" Height="27" Width="27">
+                                        </Image>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="btnTieToMeshAll" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="32" Click="btnTieToMeshAll_Click" ToolTip="Tie all nodes to the grid">
+                                    <StackPanel>
+                                        <Image Source="images/btn-all-to-mesh.png" Height="27" Width="27">
+                                        </Image>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button x:Name="btnTieToMeshAlways" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="32" Click="btnTieToMeshAlways_Click" ToolTip="Always tie nodes to the grid">
+                                    <StackPanel>
+                                        <Image Source="images/btn-always-to-mesh.png" Height="27" Width="27">
+                                        </Image>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+
+
+
+                    </StackPanel>
+
+                </StackPanel>
+              
+                <!-- End: Top Tool Panel -->
+
+            </StackPanel>
+
+            <StackPanel Name="pnlLeftToolPanel" DockPanel.Dock="Left" Orientation="Horizontal">
+                <!-- Begin: Left Tool Panel -->
+                <StackPanel Orientation="Vertical" Margin="3">
+
+                    <Button Name="btnAddPlace" Height="49" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" Margin="0,5,0,0" Click="btnAddPlace_Click" ToolTip="Add new place">
+                        <StackPanel>
+                            <Image Source="images/btn-add-place.png" Height="30" Width="30" Margin="0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Height="49" Name="btnAddTransition" VerticalAlignment="Top" Click="btnAddTransition_Click" Margin="0" HorizontalAlignment="Left" Width="49" ToolTip="Add new transition">
+                        <StackPanel>
+                            <Image Source="images/btn-add-transition.png" Height="30" Width="30" Margin="0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Height="49" HorizontalAlignment="Left" Margin="0" Name="btnAddArc" Width="49" Click="btnAddArc_Click" VerticalAlignment="Top" ToolTip="Add new arc">
+                        <StackPanel>
+                            <Image Source="images/btn-add-arc.png" Height="30" Width="30" Margin="0">
+                            </Image>
+                        </StackPanel>
+                    </Button>
+                    <Button Height="49" HorizontalAlignment="Left" Name="btnAddToken" Width="49" VerticalAlignment="Top" Click="btnAddToken_Click" ToolTip="Add token to a place">
+                        <StackPanel>
+                            <Image Source="images/btn-add-token.png" Height="30" Width="30" Margin="0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Height="49" Click="btnSetInitialState_Click" Content="Set Initial State" Visibility="Collapsed"  HorizontalAlignment="Left" Name="btnSetInitialState" Width="49" VerticalAlignment="Top" ToolTip="Set initial state">
+
+                    </Button>
+                    
+                    <Button Name="btnNonOrientedArc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" Height="49" Visibility="Collapsed" Click="btnNonOrientedArc_Click">
+                        <StackPanel>
+                            <Image Source="images/arc1.png" Height="49" Width="49" Margin="25,-10,0,0">
+                                <Image.RenderTransform>
+                                    <RotateTransform Angle="45"/>
+                                </Image.RenderTransform>
+                            </Image>
+                        </StackPanel>
+                    </Button>
+
+                    
+                    
+                </StackPanel>
+                <!-- End: Left Tool Panel -->
+            </StackPanel>
+
+            <!-- Begin: Properties Panel -->
+            <StackPanel Name="PropertiesPanel" Orientation="Vertical" DockPanel.Dock="Right" HorizontalAlignment="Right" Width="200">
+
+                <Label Height="30" Name="lblProperties" VerticalAlignment="Top" FontFamily="Properties" HorizontalAlignment="Center" Width="150">
+                    <TextBlock Text="Properties" FontSize="10" HorizontalAlignment="Center" FontFamily="Levenim MT"/>
+                </Label>
+                <props:IdProperty/>
+                <props:LabelProperty/>
+                <props:NumberOfTokensProperty/>
+                <props:PriorityProperty/>
+                <props:WeightProperty/>
+                <!--<StackPanel Orientation="Horizontal">
+                    <Label Content="ID:" Name="lblID" Visibility="Collapsed"  VerticalAlignment="Top" HorizontalAlignment="Left" MinHeight="30" />
+                    <Label Name="lblIDValue" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Name="pnlSetName" >
+                    <Label Name="lblName" Content="Label:" Visibility="Collapsed"  HorizontalAlignment="Left" VerticalAlignment="Top" MinHeight="30" />
+                    <TextBox Name="tbName" Margin="1,0,1,0" VerticalAlignment="Center" Visibility="Collapsed" 
+                             TextWrapping="NoWrap" HorizontalAlignment="Left" Width="70" HorizontalScrollBarVisibility="Auto" MaxLines="1" MinLines="1" TextChanged="tbName_TextChanged" KeyDown="tbName_KeyDown" />
+                    <Button Name="btnOkName" Content="OK" Margin="2,3,0,0" VerticalAlignment="Top" IsEnabled="False" Visibility="Collapsed"  
+                            Click="btnOkName_Click" HorizontalAlignment="Left" Height="23" Width="23" />
+                </StackPanel>-->
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Source:" Visibility="Collapsed"  Width="50" Name="lblSource" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Visibility="Collapsed" Name="lblSourceValue" Width="70" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Target:" Visibility="Collapsed"  Name="lblTarget" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Label Visibility="Collapsed" Name="lblTargetValue" Width="70" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Name="lblOutgoinArcs" Content="Postset:" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Left" MinHeight="30" />
+                    <TextBox Height="52" Margin="5,0,0,0" Name="textBoxOutgoingArcs" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91" 
+                             VerticalScrollBarVisibility="Auto" Visibility="Collapsed"  IsReadOnly="True" />
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <Label Name="lblIngoingArcs" Content="Preset:" Visibility="Collapsed"  Margin="0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="65" MinHeight="30" />
+                    <TextBox Name="textBoxIngoinArcs" Height="52" Margin="5,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91" 
+                             VerticalScrollBarVisibility="Auto" Visibility="Collapsed"  IsReadOnly="True" />
+                </StackPanel>
+                <!--<Label Content="Weight:" Width="75" Name="lblWeight" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Height="23" TextWrapping="Wrap" Margin="5,0,0,0" Name="tbArcWeight" Visibility="Collapsed"  Width="50" TextChanged="tbArcWeight_TextChanged" 
+                             PreviewKeyDown="tbArcWeight_PreviewKeyDown" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Button Content="OK" Visibility="Collapsed" Margin="5,0,0,0"  IsEnabled="False" Width="23" Name="btnWeightOK" 
+                            Click="btnWeightOK_Click" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                
+
+                <StackPanel Orientation="Vertical">
+                    <Label Name="lblNumOfTokens" Content="Number of tokens:" Visibility="Collapsed"  HorizontalAlignment="Left" VerticalAlignment="Top" MinHeight="30"  />
+                    <TextBox Height="23" Margin="5,0,0,0" HorizontalAlignment="Left" Name="tbTokenNumber" VerticalAlignment="Top" Width="80" Visibility="Collapsed" TextChanged="tbTokenNumber_TextChanged" PreviewKeyDown="tbTokenNumberPreviewKeyDown" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="btnTokenNumberChangeFieldMinus" Margin="5,5,0,0" Content="-" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"  Width="19" Click="btnTokenNumberChangeFieldMinus_Click"/>
+                        <Button Name="btnTokenNumberChangeFieldPlus" Margin="3,5,0,0" Content="+" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"  Width="19" Click="btnTokenNumberChangeFieldPlus_Click"/>
+                        <Button Name="btnTokenNumberChangeFieldOk"  Margin="3,3,0,0" Content="OK" Height="23" HorizontalAlignment="Left" Visibility="Collapsed"  VerticalAlignment="Top" IsEnabled="False" Width="24" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <Label Name="lblPriority" Content="Priority:" Visibility="Collapsed"  HorizontalAlignment="Left" VerticalAlignment="Top" MinHeight="30"  />
+                    <TextBox Height="23" Margin="5,0,0,0" HorizontalAlignment="Left" Name="tbPriority" VerticalAlignment="Top" Width="80" Visibility="Collapsed" TextChanged="tbPriority_TextChanged" PreviewKeyDown="tbPriorityPreviewKeyDown" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="btnPriorityChangeFieldMinus" Margin="5,5,0,0" Content="-" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"  Width="19" Click="btnPriorityChangeFieldMinus_Click"/>
+                        <Button Name="btnPriorityChangeFieldPlus" Margin="3,5,0,0" Content="+" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed"  Width="19" Click="btnPriorityChangeFieldPlus_Click"/>
+                        <Button Name="btnPriorityChangeFieldOk"  Margin="3,3,0,0" Content="OK" Height="23" HorizontalAlignment="Left" Visibility="Collapsed"  VerticalAlignment="Top" IsEnabled="False" Width="24" />
+                    </StackPanel>
+                </StackPanel>-->
+
+                <StackPanel Orientation="Vertical">
+                    <Label Content ="Selected:" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70" Name="lblSelected" Visibility="Collapsed"/>
+                    <TextBox Name="textboxForSelectedList" Margin="5,0,0,0" IsReadOnly="True" Height="100" TextWrapping="Wrap" VerticalAlignment="Top" 
+                             HorizontalAlignment="Left" Width="100" VerticalScrollBarVisibility="Auto" Visibility="Collapsed" />
+                </StackPanel>
+
+            </StackPanel>
+            <!-- End: Properties Panel -->
+
+            <!-- Begin: Simulation Bottom Panel -->
+            <StackPanel Name="pnlSimulationBottom" DockPanel.Dock="Bottom" Visibility="Collapsed" Margin="3">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label Name="lbllSimulationCurrentMarkingLegend" Content="Marking Legend" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        <TextBox Name="textBoxSimulationCurrentMarking" HorizontalAlignment="Left" IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" TextWrapping="NoWrap" VerticalAlignment="Top" MinLines="5" MaxLines="5" Width="600" />
+                    </StackPanel>
+                    <!-- todo Here is the place for additional function-->
+                    <Button Name="btnShowRechabilityGraph" Content="Rechability Graph" Visibility="Collapsed">
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <!-- End: Simulation Bottom Panel -->
+
+            <!-- Begin: Main Field -->
+            <Grid Name="GridMainField">
+                <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="3,0,3,5" Name="border" >
+                    <ScrollViewer Name="ScrollViewerForMainModelCanvas" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Canvas Background="White" Name="MainModelCanvas" MouseDown="canvas1_MouseDown" MouseMove="canvas1_MouseMove" MouseUp="canvas1_MouseUp" PreviewMouseWheel="canvas1_MouseWheel" SizeChanged="CanvasSizeChanged"/>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+            <!-- </Border>-->
+            <!-- End: Main Field -->
+
+        </DockPanel>
+    </Grid>
+</UserControl>
+ 
