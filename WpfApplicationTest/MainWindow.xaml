@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:pnEditorEditView="clr-namespace:PNEditorEditView;assembly=PNEditorEditView"
         xmlns:pnEditorSimulateView="clr-namespace:PNEditorSimulateView;assembly=PNEditorSimulateView"
+        xmlns:pnEditorReduction="clr-namespace:PNEditorReduction;assembly=PNEditorReduction"
         Title="Carassius - Petri Net Editor" Height="600" Width="1020"         VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" MinWidth="850" MinHeight="500" 
         Closing="PetriNetEditorWindow_Closing" Icon="Carassius.ico" PreviewKeyUp="PetriNetEditorWindow_PreviewKeyUp" 
         PreviewKeyDown="PetriNetEditorWindow_PreviewKeyDown" WindowStartupLocation="CenterScreen" WindowState="Maximized" Initialized="PetriNetEditorWindow_Initialized" >
@@ -15,9 +16,10 @@
         </Menu>
         <pnEditorEditView:PNEditorControl Name="EditControl" Margin="0,50,0,0" />
         <pnEditorSimulateView:PNEditorControl Name="SimulateControl" Margin="0,50,0,0" Visibility="Hidden"/>
-        <Button Content="Edit" Name="btEdit" HorizontalAlignment="Center" Margin="-100,25,0,0" VerticalAlignment="Top" Width="75" Click="btEdit_Click"/>
-        <Button Content="Simulate" Name="btSimulate" HorizontalAlignment="Center" Margin="100,25,0,0" VerticalAlignment="Top" Width="75" Click="btSimulate_Click"/>
-
+        <pnEditorReduction:PNEditorControl Name="ReductionControl" Margin="0,50,0,0" Visibility="Hidden"/>
+        <Button Content="Edit" Name="btEdit" HorizontalAlignment="Center" Margin="-200,25,0,0" VerticalAlignment="Top" Width="75" Click="btEdit_Click"/>
+        <Button Content="Simulate" Name="btSimulate" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Width="75" Click="btSimulate_Click"/>
+        <Button Content="Reduction" Name="btReduction" HorizontalAlignment="Center" Margin="200,25,0,0" VerticalAlignment="Top" Width="75" Click="btReduction_Click"/>
     </Grid>
 
 </Window>

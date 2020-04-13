@@ -114,7 +114,7 @@
 
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="3">
+                    <StackPanel Orientation="Horizontal" Margin="3" RenderTransformOrigin="0.5,0.5" Width="349">
 
                         <Button Name="btnShowHideLabels" Height="49" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" Click="btnShowHideLabels_Click" FontFamily="Candara" IsEnabled="False" ToolTip="Hide/show labels on the model">
                             <StackPanel>
@@ -133,36 +133,32 @@
                         </Button>
 
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="Grid layout:" TextAlignment="Center" TextWrapping="Wrap" FontSize="10" FontFamily="Levenim MT" FontWeight="Normal" />
-                            <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Grid layout:" TextAlignment="Center" TextWrapping="Wrap" FontSize="10" FontFamily="Levenim MT" FontWeight="Normal" Width="77" />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,0,0,0" Width="132">
                                 <Button x:Name="btnTieToMesh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="32" Click="btnTieToMesh_Click" ToolTip="Tie this node to the grid">
                                     <StackPanel>
-                                        <Image Source="images/Mesh.png" Height="27" Width="27">
-                                        </Image>
+                                        <Image Source="images/Mesh.png" Height="27" Width="27"/>
                                     </StackPanel>
                                 </Button>
                                 <Button x:Name="btnTieToMeshAll" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="32" Click="btnTieToMeshAll_Click" ToolTip="Tie all nodes to the grid">
                                     <StackPanel>
-                                        <Image Source="images/btn-all-to-mesh.png" Height="27" Width="27">
-                                        </Image>
+                                        <Image Source="images/btn-all-to-mesh.png" Height="27" Width="27"/>
                                     </StackPanel>
                                 </Button>
 
                                 <Button x:Name="btnTieToMeshAlways" HorizontalAlignment="Left" VerticalAlignment="Top" Width="32" Height="32" Click="btnTieToMeshAlways_Click" ToolTip="Always tie nodes to the grid">
                                     <StackPanel>
-                                        <Image Source="images/btn-always-to-mesh.png" Height="27" Width="27">
-                                        </Image>
+                                        <Image Source="images/btn-always-to-mesh.png" Height="27" Width="27"/>
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
                         </StackPanel>
 
 
-
                     </StackPanel>
 
                 </StackPanel>
-              
+
                 <!-- End: Top Tool Panel -->
 
             </StackPanel>
@@ -195,7 +191,7 @@
                     <Button Height="49" Click="btnSetInitialState_Click" Content="Set Initial State" Visibility="Collapsed"  HorizontalAlignment="Left" Name="btnSetInitialState" Width="49" VerticalAlignment="Top" ToolTip="Set initial state">
 
                     </Button>
-                    
+
                     <Button Name="btnNonOrientedArc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="49" Height="49" Visibility="Collapsed" Click="btnNonOrientedArc_Click">
                         <StackPanel>
                             <Image Source="images/arc1.png" Height="49" Width="49" Margin="25,-10,0,0">
@@ -205,9 +201,6 @@
                             </Image>
                         </StackPanel>
                     </Button>
-
-                    
-                    
                 </StackPanel>
                 <!-- End: Left Tool Panel -->
             </StackPanel>

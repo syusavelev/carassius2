@@ -71,6 +71,8 @@ namespace PNEditorEditView
             return new VPetriNet();
         }
 
+       
+
         //----------------------------------------------------------------------
 
         private VPetriNet()

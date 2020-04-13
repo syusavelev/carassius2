@@ -14,7 +14,7 @@ namespace Core.Model
         /// <summary>
         /// Position of node in document (pixels)
         /// </summary>
-        public (double x,double y) Position { get; set; }
+        public (double x, double y) Position { get; set; }
         /// <summary>
         /// Textual label of node
         /// </summary>
@@ -23,5 +23,9 @@ namespace Core.Model
         /// Unique identificator of node
         /// </summary>
         public string Id { get; set; }
+
+
+        public abstract NodeBase MyClone();
+        
     }
 }

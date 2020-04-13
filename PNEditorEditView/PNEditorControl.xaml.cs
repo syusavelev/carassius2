@@ -184,6 +184,18 @@ namespace PNEditorEditView
 
         #region ClickHandlers
 
+        private void btnReductionMenu_Click(object sender, RoutedEventArgs e)
+        {
+            btnSelect.IsEnabled = true;
+            if (Net.Nodes.Count == 0)
+            {
+                MessageBox.Show(EMPTYMODEL);
+                return;
+            }
+
+            PNtoTeXSettings PetriTeXWindow = new PNtoTeXSettings();
+            PetriTeXWindow.ShowDialog();
+        }
         private void btnAddPlace_Click(object sender, RoutedEventArgs e)
         {
             btnSelect.IsEnabled = true;
@@ -624,7 +636,6 @@ namespace PNEditorEditView
         }
 
         #endregion ClickHandlers
-
 
         #region PetriNetImportExport
 

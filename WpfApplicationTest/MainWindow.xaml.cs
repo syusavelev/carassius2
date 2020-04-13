@@ -19,7 +19,7 @@ namespace Carassius
             MainController.Self.HostWindow = this;
             PNEditorControl.ShowMainWindowTitleDelegate = ShowTitle;
             PNEditorSimulateView.PNEditorControl.ShowMainWindowTitleDelegate = ShowTitle;
-
+            PNEditorReduction.PNEditorControl.ShowMainWindowTitleDelegate = ShowTitle;
         }
 
         private Dictionary<string, bool> MenuEnabledState = new Dictionary<string, bool>();
@@ -41,12 +41,14 @@ namespace Carassius
             activeView = view;
             EditControl.Visibility = Visibility.Hidden;
             SimulateControl.Visibility = Visibility.Hidden;
+            ReductionControl.Visibility = Visibility.Hidden;
             if (view == EditControl)
                 EditControl.Visibility = Visibility.Visible;
-            else
-            {
+            if(view == SimulateControl)
                 SimulateControl.Visibility = Visibility.Visible;
-            }
+            if(view == ReductionControl)
+                ReductionControl.Visibility = Visibility.Visible;
+
             activeView.Activate();
             RefreshMenu();
         }
@@ -77,6 +79,7 @@ namespace Carassius
         {
             activeView.UserControlKeyDown(sender, e);
         }
+
         private void PetriNetEditorWindow_Initialized(object sender, System.EventArgs e)
         {
             activeView = EditControl;
@@ -168,6 +171,11 @@ namespace Carassius
         private void btSimulate_Click(object sender, RoutedEventArgs e)
         {
             ActiveView(SimulateControl);
+        }
+
+        private void btReduction_Click(object sender, RoutedEventArgs e)
+        {
+           ActiveView(ReductionControl);
         }
     }
 }

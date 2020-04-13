@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNEditorEditView", "PNEditorEditView\PNEditorEditView.csproj", "{4EBA4176-BE2B-4479-AAA0-E03FF0611208}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{19B6A8FC-7BA5-4748-915E-65DFD8D8A65E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNEditorSimulateView", "PNEditorSimulateView\PNEditorSimulateView.csproj", "{81B48636-E100-4665-9464-91305AEBA154}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNEditorReduction", "PNEditorReduction\PNEditorReduction.csproj", "{45037E1D-EF38-4CCB-B166-7170DDFB3286}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,6 +115,22 @@ Global
 		{81B48636-E100-4665-9464-91305AEBA154}.Release|Win32.Build.0 = Release|Any CPU
 		{81B48636-E100-4665-9464-91305AEBA154}.Release|x86.ActiveCfg = Release|Any CPU
 		{81B48636-E100-4665-9464-91305AEBA154}.Release|x86.Build.0 = Release|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Debug|Win32.Build.0 = Debug|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Debug|x86.Build.0 = Debug|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Release|Win32.ActiveCfg = Release|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Release|Win32.Build.0 = Release|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Release|x86.ActiveCfg = Release|Any CPU
+		{45037E1D-EF38-4CCB-B166-7170DDFB3286}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

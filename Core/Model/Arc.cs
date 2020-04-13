@@ -28,6 +28,17 @@ namespace Core.Model
         /// </summary>
         public int Weight { get; set; }
 
+        
+        public Arc MyClone()
+        {
+            Arc temp = new Arc();
+            temp.Id = Id;
+            temp.NodeFrom = NodeFrom.MyClone();
+            temp.NodeTo = NodeTo.MyClone();
+            temp.Weight = Weight;
+            return temp;
+        }
+        
         //todo: validation if needed
     }
 }

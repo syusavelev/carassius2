@@ -24,6 +24,7 @@ namespace PNEditorSimulateView
     /// </summary>
     public partial class PNEditorControl : IView
     {
+        #region private-const
         private const string ADDARC = "Add new arc";
         private const string ADDNODE = "Add new node";
         private const string ADDEDGE = "Add new edge";
@@ -53,6 +54,8 @@ namespace PNEditorSimulateView
         private const int PLACEHEIGHT = 30;
         private const int TRANSITIONWIDTH = 20;
         private const int TRANSITIONHEIGHT = 50;
+
+        #endregion private-const
 
         // main Petri-net
         public static VPetriNet Net = VPetriNet.Create();
@@ -448,8 +451,6 @@ namespace PNEditorSimulateView
         }
 
         #endregion ClickHandlers
-
-
 
         #region PetriNetImportExport
 
@@ -1127,6 +1128,7 @@ namespace PNEditorSimulateView
 
         #endregion Events 
 
+        #region decl-vars
         private static readonly Stopwatch Stopwatch = new Stopwatch();
 
         public void StopStopWatch()
@@ -1204,6 +1206,8 @@ namespace PNEditorSimulateView
 
 
         private bool _firstFocusOnTab = true;
+
+        #endregion delc-vars
 
         private void AddSelectRectangeOnCanvas(Rectangle selectedRect)
         {
@@ -1970,9 +1974,6 @@ namespace PNEditorSimulateView
 
         double borderX = spaceBetweenCells, borderY = spaceBetweenCells;
 
-
-
-
         public void VisualizePetriNet(VPetriNet net)
         {
             ClearCanvasWithoutLoss();
@@ -2146,5 +2147,4 @@ namespace PNEditorSimulateView
             ShowMainWindowTitleDelegate("Carassius - Petri Net Editor");
         }
     }
-
 }

@@ -233,8 +233,7 @@ namespace PNEditorSimulateView
                 HideProperties();
                 HideArcProperties();
                 HideSelectedProperties();
-            }
-           
+            }           
         }
     }
 }

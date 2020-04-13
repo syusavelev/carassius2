@@ -310,6 +310,12 @@
   <ItemGroup>
     <Resource Include="Model\Readme.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\arrow-prev-icon.png" />
+    <Resource Include="images\save-icon.png" />
+    <Resource Include="images\settings-icon.png" />
+    <Resource Include="images\аrrow-next-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

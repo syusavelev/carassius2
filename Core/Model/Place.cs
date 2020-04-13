@@ -16,5 +16,15 @@ namespace Core.Model
         /// </summary>
         public int Tokens { get; set; }
 
+        
+        public override NodeBase MyClone()
+        {
+            Place temp = new Place();
+            temp.Position = Position;
+            temp.Label = Label;
+            temp.Id = Id;
+            temp.Tokens = Tokens;
+            return temp;
+        }        
     }
 }
